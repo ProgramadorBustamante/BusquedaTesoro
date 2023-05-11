@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic 4|5|6 Form
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/auth/registration']" expand="block" color="primary">Registrar</ion-button>
+
+        <span class="divider line one-line">o</span>
+
+        <span class="already">Ya eres Usuario?</span>
+
+        <ion-button [routerLink]="['/auth/login']" expand="block" color="danger">Ingresar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

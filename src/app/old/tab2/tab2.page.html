@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Camara 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+
+
+<div style="width: 100%; height: 80%; display: grid;justify-content: center;align-items: center;">
+
+  <div  style="text-align: center;">
+    <img *ngIf="imageUrl" [src]="imageUrl" alt="" srcset="">
+   <!--  <h1>Bienvenido : {{ user.name}}</h1>
+    <h5>Bienvenido : {{ user.email}}</h5>
+    <hr>-->
+  </div> 
+</div>
+
+<div style="text-align: center;">
+ <!-- <ion-button (click)="signIn()" >Login whit google </ion-button> -->
+  <ion-button (click)="openCamera()" >Tomar/Seleccionar Imagen </ion-button>
+</div>
+
+</ion-content>

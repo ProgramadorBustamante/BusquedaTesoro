@@ -1,0 +1,25 @@
+<ion-header [translucent]="true"  [style.visibility]="content_visibility" >
+  <ion-toolbar>
+    <ion-title>
+      Lector de Qr
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"  [style.visibility]="content_visibility">
+ 
+
+  <div style="width: 100%; height: 80%; display: grid;justify-content: center;align-items: center;">
+
+  <div *ngIf="textcode" style="text-align: center;">
+    <h1>Contenido qr  : {{ textcode}}</h1>
+   <!--  <h5>Bienvenido : {{ user.email}}</h5>
+    <hr>-->
+  </div> 
+</div>
+
+<div style="text-align: center;">
+ <!-- <ion-button (click)="signIn()" >Login whit google </ion-button> -->
+  <ion-button (click)="scanQr()" > Leer Qr </ion-button>
+</div>
+</ion-content>
