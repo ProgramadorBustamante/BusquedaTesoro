@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>acertijo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<h1>Te Ecnuentras cerca del tesoro  "{{ tesoro.data.titulo }}" </h1>
+<img [src]="tesoro.data.urlImagen" >
+<p> Ahora tenes que responder una adivinanza/acertijo y ganaras <strong>{{ tesoro.data.puntos }}</strong> puntos </p>
+<p> Tenes 3 intentos, si los agotas no podras acceder hasta el dia de mañana</p>
+
+
+<h1> {{ tesoro.data.acertijo }}</h1>
+<hr>
+
+<ion-textarea fill="outline" placeholder="Ingresa tu respuesta aqui" [value]="respuesta" style="border: 1px solid gray;"></ion-textarea>
+<hr>
+    <ion-button  (click)="Validar()" > Responder  </ion-button>
+
+</ion-content>

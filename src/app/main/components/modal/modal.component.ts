@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal',
@@ -7,11 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalComponent  implements OnInit {
   data : any ;
-  constructor() { }
+  enabled: boolean;
+  constructor(private router : Router,private modalCtrl : ModalController) { }
 
   ngOnInit() {
     console.log(this.data);
     
+
+    if(this.data.distancia <= 0.100)
+    {
+      this.enabled = true;
+    }
+
   }
+
+  Encontrado(){
+    console.log("Encontre el tesoro");
+    localStorage.setItem('tesoro',JSON.stringify(this.data));
+    this.router.navigateByUrl('/main/acertijo');
+
+    this.modalCtrl.dismiss();
+
+
+  };
+
 
 }

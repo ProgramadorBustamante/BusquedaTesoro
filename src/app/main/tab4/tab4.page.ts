@@ -94,6 +94,9 @@ export class Tab4Page implements OnInit {
 
 async ver(data : any ){
 
+  data.distancia = this.distance(this.center.lat, this.center.lng ,data.data.lat ,data.data.long  )
+
+
 
   const modal = await this.modalCtrl.create({
     component: ModalComponent,
@@ -103,74 +106,6 @@ async ver(data : any ){
     }
   });
   modal.present();
-
-    // console.log(data);
-    // var directionsService = new google.maps.DirectionsService;
-    // var service = new google.maps.DistanceMatrixService;
-    // var geocoder = new google.maps.Geocoder;
-    // var bounds = new google.maps.LatLngBounds;
-    
-    // const map = this.map;
-    // directionsService.route({
-    //   origin: this.center,
-    //   destination: data.position,
-    //   travelMode: google.maps.TravelMode.DRIVING
-    // }).then(c=>{
-    //   console.log(c);
-      
-  
-    // })
-  
-
-
-    // var showGeocodedAddressOnMap =  (asDestination :  any ) =>{
-    //   return function (results:any, status:any) {
-    //     if (status === 'OK') {
-    //       map.fitBounds(bounds.extend(results[0].geometry.location));
-    //       // markersArray.push(new google.maps.Marker({
-    //       //   map: map,
-    //       //   position: results[0].geometry.location,
-    //       //   icon: icon
-    //       // }));
-    //     } else {
-    //       alert('Geocode was not successful due to: ' + status);
-    //     }
-    //   };
-    // };
-
-    // service.getDistanceMatrix({
-    //   origins: [this.center],
-    //   destinations: [data.position],
-    //   travelMode: google.maps.TravelMode.DRIVING,
-    //   unitSystem: google.maps.UnitSystem.METRIC,
-    //   avoidHighways: false,
-    //   avoidTolls: false
-    // }).then(c=>{
-    //     console.log(c);
-    //     var originList = c.originAddresses;
-    //     var destinationList = c.destinationAddresses;
-
-    //     for (let i = 0; i < originList.length; i++) {
-    //       let results = c.rows[i].elements;
-    //       geocoder.geocode({ 'address': originList[i] },
-    //         showGeocodedAddressOnMap(false));
-    //       for (let j = 0; j < results.length; j++) {
-    //         geocoder.geocode({ 'address': destinationList[j] },
-    //           showGeocodedAddressOnMap(true));
-    //       }
-    //     }
-    // })
-
-    // this.ds.route(request, (response, status) => {
-    //   this.dr.setOptions({
-    //     suppressPolylines: false,
-    //     map: this.map
-    //   });
-
-    //   if (status == google.maps.DirectionsStatus.OK) {
-    //     this.dr.setDirections(response);
-    //   }
-    // })
 
   }
 
@@ -183,8 +118,9 @@ async ver(data : any ){
       
       this.center =  {
         // The initial position to be rendered by the map
-        lat: coordinates.coords.latitude,
-        lng: coordinates.coords.longitude,
+        lat:   -46.448181614999136,
+        lng: -67.5231801595207,
+       
       };
       
       this.markers.push({
@@ -215,5 +151,28 @@ async ver(data : any ){
     this.router.navigate(['/main/ranking'])
 
   }
+
+
+   distance(lat1 : number, lon1: number, lat2: number, lon2: number, unit = "K") {
+    if ((lat1 == lat2) && (lon1 == lon2)) {
+        return 0;
+    }
+    else {
+        var radlat1 = Math.PI * lat1/180;
+        var radlat2 = Math.PI * lat2/180;
+        var theta = lon1-lon2;
+        var radtheta = Math.PI * theta/180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        if (dist > 1) {
+            dist = 1;
+        }
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        if (unit=="K") { dist = dist * 1.609344 }
+        if (unit=="N") { dist = dist * 0.8684 }
+        return dist;
+    }
+}
 
 }

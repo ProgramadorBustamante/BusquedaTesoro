@@ -20,6 +20,7 @@ export class AuthService {
       return await this.ngFireAuth.createUserWithEmailAndPassword(data.email, data.password).then(async (c)=> 
         {
           if(c.user){
+            localStorage.setItem('uid' , c.user.uid);
             return await this.afStore.collection("jugadores").doc(c.user.uid).set({...data}).then(c=> true).catch(err=> false);
           }
           else {
@@ -27,5 +28,8 @@ export class AuthService {
           }
         })
     }
+
+
+    
 
 }

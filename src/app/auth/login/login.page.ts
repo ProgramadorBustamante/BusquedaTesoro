@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
       
       this.authServ.SignIn(this.frmLogin.value).then(c=>{
         if(c.user){
+          localStorage.setItem('uid' , c.user.uid);
           this.router.navigate(['/main'])
         }
         
