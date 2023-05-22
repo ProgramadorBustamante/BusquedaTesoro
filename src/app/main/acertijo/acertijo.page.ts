@@ -32,8 +32,19 @@ export class AcertijoPage implements OnInit {
 
       this.tesoroServ.encontrarTesoro(this.uid , this.tesoro.data);
     }else{
+      const alert = await this.alertCtrl.create({
+        header: 'Lo sentimos!',
+        subHeader  : "la respuesta es incorrecta",
+         message : 'intenata nuevamente' ,
+          buttons: ['OK'],
+      })
+      await alert.present();
+
       this.numIntentos++;
       if(this.numIntentos > 3){
+
+        this.tesoroServ.bloquearTesoro(this.uid , this.tesoro.data);
+
         const alert = await this.alertCtrl.create({
           header: 'Lo sentimos!',
           subHeader  : "Haz superado el numero de intentos por dia ",

@@ -4,15 +4,22 @@
   <hr>
   <p>{{data.data.descripcion }}</p>
 
-  <img [src]="data.data.urlImagen">
+  <img [src]="data.data.urlImagen" style="width: 100vw;  object-fit: cover;">
+
+  
+  <div *ngIf="this.encontrado">
+    Felicidades ya has encontrado este tesoro
+  </div>
 
 
-  <div class="options" style="position: absolute;bottom: 20px; display: grid; grid-template-columns: 1fr 1fr; width: 100%;">
+  <div *ngIf="!this.encontrado" class="options" style="position: absolute;bottom: 20px; display: grid; grid-template-columns: 1fr 1fr; width: 100%;">
+
     <div>
 
       <ion-button>ir a la ubicacion</ion-button>
     </div>
-    <div>
+    
+    <div >
       <ion-button [disabled]="!enabled" (click)="Encontrado()" > Marcar como encontrado</ion-button>
       <br>
           <span *ngIf="!enabled">Para marcar como encontrado es necesario estar a menos de 50 metos de la ubicacion.</span>

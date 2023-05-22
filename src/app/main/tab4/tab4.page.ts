@@ -33,7 +33,9 @@ export class Tab4Page implements OnInit {
 
   ngOnInit() { 
   
- this.tesorosServ.obtenerTesoros().subscribe(c=> {
+ this.tesorosServ.obtenerTesoros().then(c=> {
+  console.log(c);
+  
   c.docs.map((doc: any )=>{
     this.markers.push({
       position: {
@@ -118,8 +120,8 @@ async ver(data : any ){
       
       this.center =  {
         // The initial position to be rendered by the map
-        lat:   -46.448181614999136,
-        lng: -67.5231801595207,
+        lat:   this.latitude,
+        lng:  this.longitude,
        
       };
       
@@ -148,7 +150,7 @@ async ver(data : any ){
   }
      
   verranking(){
-    this.router.navigate(['/main/ranking'])
+    this.router.navigate(['/main/tabs/ranking'])
 
   }
 

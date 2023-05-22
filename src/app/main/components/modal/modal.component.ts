@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { TesorosService } from 'src/core/services/tesoros.service';
 
 @Component({
   selector: 'app-modal',
@@ -10,16 +11,23 @@ import { ModalController } from '@ionic/angular';
 export class ModalComponent  implements OnInit {
   data : any ;
   enabled: boolean;
-  constructor(private router : Router,private modalCtrl : ModalController) { }
+  encontrado : boolean = false;
+  constructor(private router : Router,private modalCtrl : ModalController,private tesoroServ : TesorosService) { }
 
   ngOnInit() {
     console.log(this.data);
-    
+    let uid =   localStorage.getItem('uid') || "0";
+    this.tesoroServ.abierto(uid ,this.data.data.id).subscribe(c=>{
+      console.log(c.exists);
+      this.encontrado =c.exists;
+    })
+
 
     if(this.data.distancia <= 0.100)
     {
       this.enabled = true;
     }
+
 
   }
 

@@ -36,7 +36,13 @@ export class LoginPage implements OnInit {
         
         if(c){
           localStorage.setItem('uid' , c.user?.uid || "");
+          
+          this.authServ.ObtenerPuntos(c.user?.uid);
+          
           this.router.navigate(['/main/tabs/mapa'])
+
+
+
         }else{
          const alert = await  this.alertCtrl.create({
             header: '¡Atención!',

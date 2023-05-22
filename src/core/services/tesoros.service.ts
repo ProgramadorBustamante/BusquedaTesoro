@@ -6,24 +6,28 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   providedIn: 'root',
 })
 export class TesorosService {
+  
+
   constructor(
     private httpClient: HttpClient,
     public afStore: AngularFirestore
   ) {}
 
   obtenerTesoros() {
-    return this.afStore.collection('tesoros').get();
+    var puntos = localStorage.getItem('puntos')
+    console.log(puntos);
+    
+    return this.afStore.collection('tesoros').ref
+    .where("minPuntos", "<=", Number.parseInt(puntos || "0"))
+    .orderBy("minPuntos", "asc").get()
   }
 
   async encontrarTesoro(uid: any, tesoro: any) {
-    debugger;
     this.afStore
       .collection('Historial')
       .doc(uid)
       .ref.get()
       .then((c : any ) => {
-        debugger;
-        
         let puntosTotal = c.data() ? c.data().puntos : 0;
 
         puntosTotal += tesoro.puntos;
@@ -34,8 +38,8 @@ export class TesorosService {
         return this.afStore
           .collection('Historial')
           .doc(uid)
-          .collection('tesoros')
-          .add({ ...tesoro });
+          .collection('tesoros').doc(tesoro.id).set
+          ({ ...tesoro });
       });
   }
 
@@ -49,6 +53,18 @@ export class TesorosService {
     
   }
 
+  bloquearTesoro(uid: string | undefined, data: any) {
+   this.afStore.collection("bloqueos").add({
+    uid : uid,
+    tesoroid : data.id,
+    fecha : new Date(),
+    data : data
+   })
+  }
+
+  abierto(uid : string , tid :string) {
+    return this.afStore.collection("Historial").doc(uid).collection("tesoros").doc(tid).get();
+  }
 
 
 }
