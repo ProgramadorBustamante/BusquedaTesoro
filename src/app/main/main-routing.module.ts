@@ -1,27 +1,51 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TabsPage } from './tabs/tabs.page';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () =>
-      import('./tab4/tab4.module').then((m) => m.Tab4PageModule),
+    path: 'tabs',
+    component : TabsPage,
+    children : [
+      {
+        path : 'mapa',
+        loadChildren: () =>
+          import('./tab4/tab4.module').then((m) => m.Tab4PageModule),
+      },
+      {
+        path: 'ranking',
+        loadChildren: () =>
+        import('./ranking/ranking.module').then((m) => m.RankingPageModule),
+      },
+      {
+        path: 'perfil',
+        loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+      },
+      {
+        path: 'tutorial',
+        loadChildren: () => import('./tutorial/tutorial.module').then( m => m.TutorialPageModule)
+      },
+      {
+        path: 'mapa',
+        redirectTo: '',
+        pathMatch: 'full',
+      },
+    ]
+    
   },
   {
-    path: '',
+    path: 'main/tabs/home',
     redirectTo: '',
     pathMatch: 'full',
   },
-  {
-    path: 'ranking',
-    loadChildren: () =>
-      import('./ranking/ranking.module').then((m) => m.RankingPageModule),
-  },
+  
   {
     path: 'acertijo',
     loadChildren: () =>
       import('./acertijo/acertijo.module').then((m) => m.AcertijoPageModule),
   },
+ 
+ 
 ];
 
 @NgModule({

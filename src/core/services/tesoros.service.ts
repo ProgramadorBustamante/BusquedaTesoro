@@ -38,4 +38,17 @@ export class TesorosService {
           .add({ ...tesoro });
       });
   }
+
+  getranking(){
+    return this.afStore.collection('Historial').ref.orderBy("puntos", "desc").get().then(c=>c);
+  }
+
+   getUser( id : any  ){
+    
+      return   this.afStore.collection('jugadores').doc(id).ref.get();
+    
+  }
+
+
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/core/services/auth.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginPage implements OnInit {
     password : new FormControl('',Validators.required)
   });
 
-  constructor( private authServ : AuthService ,private router: Router ) { }
+  constructor( private authServ : AuthService ,private router: Router,private alertCtrl : AlertController ) { }
 
   ngOnInit() {
 
@@ -30,14 +31,31 @@ export class LoginPage implements OnInit {
 
       console.log(this.frmLogin.value);
       
-      this.authServ.SignIn(this.frmLogin.value).then(c=>{
-        if(c.user){
-          localStorage.setItem('uid' , c.user.uid);
-          this.router.navigate(['/main'])
+      this.authServ.SignIn(this.frmLogin.value).then(async (c)=>{
+        console.log(c);
+        
+        if(c){
+          localStorage.setItem('uid' , c.user?.uid || "");
+          this.router.navigate(['/main/tabs/mapa'])
+        }else{
+         const alert = await  this.alertCtrl.create({
+            header: '¡Atención!',
+          subHeader  : "Usuario o contraseña incorrectos",
+           message : 'Intenta nuevamente!',
+            buttons: ['OK'],
+          });
+
+          await alert.present();
         }
         
-      }).catch(err=>{
-        console.log(err);
+      }).catch(async (err)=>{
+        const alert = await this.alertCtrl.create({
+          header: '¡Atención!',
+          subHeader  : "Usuario o contraseña incorrectos",
+           message : 'Intenta nuevamente!',
+            buttons: ['OK'],
+        })
+        await alert.present();
       })
     }
   }

@@ -35,7 +35,7 @@ export class RegistrationPage implements OnInit {
       
       this.authServ.RegisterUser(this.frmRegistro.value).then(c=>{
         if(c){
-          this.router.navigate(['/main'])
+          this.router.navigate(['/main/tabs/mapa'])
         }
         
       }).catch(err=>{

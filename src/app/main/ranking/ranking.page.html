@@ -5,5 +5,13 @@
 </ion-header>
 
 <ion-content>
+  <ion-list style="margin: 1rem;">
+    <ion-item *ngFor="let item of ranking ">
+      <ion-icon name="leaf" item-start></ion-icon>
+      {{item.user.user }}
+      <span slot="end"> {{item.data.puntos }} </span>
+    </ion-item>
+  </ion-list>
 
+<ion-button  (click)="shared()">  Compartir </ion-button>
 </ion-content>
