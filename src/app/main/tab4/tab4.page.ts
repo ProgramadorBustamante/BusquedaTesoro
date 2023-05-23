@@ -27,11 +27,18 @@ export class Tab4Page implements OnInit {
   longitude: number;
   markers : any[] = [];
   tesoros: Observable<any>;
+  user: any = {
+    user : ""
+  };
 
   constructor(private modalCtrl: ModalController,private router: Router,private tesorosServ : TesorosService) { }
 
 
   ngOnInit() { 
+    this.user =     JSON.parse(localStorage.getItem('user')|| "{}");
+
+      
+
   
  this.tesorosServ.obtenerTesoros().then(c=> {
   console.log(c);

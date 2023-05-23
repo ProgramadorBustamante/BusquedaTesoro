@@ -6,4 +6,33 @@
 
 <ion-content>
 
+  <h2>Bienvenido </h2>
+  <form [formGroup]="frmUsuario" (submit)="Actualizar()">
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre : </ion-label>
+      <ion-input  [disabled]="true"  formControlName="name"> </ion-input> 
+    </ion-item>
+    <ion-item>
+      <ion-label>Nick Name : </ion-label>
+      <ion-input  formControlName="user"> </ion-input> 
+    </ion-item>
+    <ion-item>
+      <ion-label>Email : </ion-label>
+      <ion-input [disabled]="true" formControlName="email"> </ion-input> 
+    </ion-item>
+  </ion-list>
+  <ion-button type="submit" >Actualizar Datos</ion-button>
+</form>
+
+  <div style="position: absolute;
+  bottom: 70px;
+  /* margin: auto; */
+  width: 100%;
+  display: grid;
+  justify-items: center;">
+
+    <ion-button (click)="Salir()"> Cerrar Sesión</ion-button>
+  </div>
 </ion-content>

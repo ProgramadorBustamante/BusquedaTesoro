@@ -36,7 +36,9 @@ export class LoginPage implements OnInit {
         
         if(c){
           localStorage.setItem('uid' , c.user?.uid || "");
-          
+          this.authServ.ObtenerUsuario(c.user?.uid || "" );
+       
+
           this.authServ.ObtenerPuntos(c.user?.uid);
           
           this.router.navigate(['/main/tabs/mapa'])

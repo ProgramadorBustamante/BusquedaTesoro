@@ -8,6 +8,7 @@ import { AlertController } from '@ionic/angular';
   providedIn: 'root',
 })
 export class AuthService {
+  
  
   constructor(
     public afStore: AngularFirestore,
@@ -28,7 +29,7 @@ export class AuthService {
       .then(async (c) => {
         if (c.user) {
           localStorage.setItem('uid', c.user.uid);
-          // localStorage.setItem('user' , c.user.metadata);
+          localStorage.setItem('user' , data);
 
           return await this.afStore
             .collection('jugadores')
@@ -56,6 +57,14 @@ export class AuthService {
     localStorage.setItem('puntos' , (c.data().puntos || 0));
     
   })
+  }
+
+  async ObtenerUsuario(uid: string | undefined) {
+    return await this.afStore
+    .collection('jugadores')
+    .doc(uid).get().subscribe(c=>{
+      localStorage.setItem('user' , JSON.stringify(c.data()));
+    })
   }
 
 

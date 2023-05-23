@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   providedIn: 'root',
 })
 export class TesorosService {
+ 
   
 
   constructor(
@@ -64,6 +65,10 @@ export class TesorosService {
 
   abierto(uid : string , tid :string) {
     return this.afStore.collection("Historial").doc(uid).collection("tesoros").doc(tid).get();
+  }
+
+  ActualizarDatos(uid : string , data = {}) {
+   return  this.afStore.collection('jugadores').doc(uid).set(data,{ merge : true})
   }
 
 

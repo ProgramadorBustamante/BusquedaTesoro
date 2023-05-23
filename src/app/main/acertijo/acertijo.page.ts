@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { TesorosService } from 'src/core/services/tesoros.service';
 
@@ -13,7 +14,7 @@ export class AcertijoPage implements OnInit {
   respuesta : any = "";
   uid: string | undefined;
   numIntentos : number = 0;
-  constructor( private tesoroServ : TesorosService,private afa : AngularFireAuth, private alertCtrl : AlertController) { }
+  constructor( private tesoroServ : TesorosService,private afa : AngularFireAuth, private alertCtrl : AlertController, private router :Router) { }
 
   ngOnInit() {
     this.tesoro =   JSON.parse(localStorage.getItem('tesoro') || "");
@@ -23,12 +24,13 @@ export class AcertijoPage implements OnInit {
 
     if(this.respuesta.includes(this.tesoro.data.respuestaAcertijo)){
       const alert = await this.alertCtrl.create({
-        header: '¡Imprecionante!',
-        subHeader  : "Tu respuesta es correcta ",
-         message : 'haz ganado '+ this.tesoro.data.puntos + ' Puntos ' ,
+        header: 'Felicidades!',
+        subHeader  : "Sabias que : "+this.tesoro.data.sabiasque,
+         message : 'Haz ganado '+ this.tesoro.data.puntos + ' Puntos ' ,
           buttons: ['OK'],
       })
       await alert.present();
+      this.router.navigate(['main','tabs','mapa'])
 
       this.tesoroServ.encontrarTesoro(this.uid , this.tesoro.data);
     }else{
