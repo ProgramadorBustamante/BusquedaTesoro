@@ -1,25 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>acertijo</ion-title>
+    <ion-title>DESAFIO</ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <div style="padding: 1rem;">
 
-    <h5>Estas ubicado en el tesoro  "{{ tesoro.data.titulo }}" </h5>
-    <img [src]="tesoro.data.urlImagen" >
-    <p> Responde el desafio y ganaras <strong>{{ tesoro.data.puntos }}</strong> puntos </p>
-<hr>
-
+    <h5>Te encuentras en el tesoro  "{{ tesoro.data.titulo }}" </h5>
+    <img [src]="tesoro.data.urlImagen" width="100%">
+    <p> Completa el siguientedesafio y ganaras +<strong>{{ tesoro.data.puntos }}</strong> puntos.</p>
+<hr color="success">
 <h5> {{ tesoro.data.acertijo }}</h5>
-<hr>
-<p> **Tenes 3 intentos, si los agotas no podras acceder hasta el dia de mañana</p>
+<hr color="success">
 
-<p>Ingresa respuesta y valida</p>
-<ion-textarea fill="outline" placeholder="Ingresa tu respuesta aqui"  [(ngModel)]="respuesta" style="border: 1px solid gray;"></ion-textarea>
+<small><span style="color: yellow"> *Tienes 3 intentos, si los agotas no podras acceder hasta el día de mañana.</span></small>
+
+<p>Ingresa tu respuesta:</p>
+<ion-textarea fill="outline" placeholder="Escribe aqui..."  [(ngModel)]="respuesta" style="border: 1px solid gray;"></ion-textarea>
 <hr>
-<ion-button  (click)="Validar()" > Validar  </ion-button>
+<ion-button  (click)="Validar()" color="success" expand="block"> Validar respuesta <ion-icon name="checkmark-outline"></ion-icon> </ion-button>
 
 </div>
 </ion-content>

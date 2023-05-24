@@ -1,6 +1,6 @@
 <div class="wraper" style="padding : 1rem " >
   
-  <h1>{{data.data.titulo}}</h1>
+  <h1 style="color: seagreen;">{{data.data.titulo}}</h1>
   <hr>
   <p>{{data.data.descripcion }}</p>
 
@@ -8,22 +8,20 @@
 
   
   <div *ngIf="this.encontrado">
-    Felicidades ya has encontrado este tesoro
+    Felicidades ya completaste la busqueda!
   </div>
 
 
   <div *ngIf="!this.encontrado" class="options" style="position: absolute;bottom: 20px; display: grid; grid-template-columns: 1fr 1fr; width: 100%;">
 
     <div>
-
-      <ion-button>ir a la ubicacion</ion-button>
+      <ion-button>Ir a la ubicación</ion-button>
     </div>
     
     <div >
-      <ion-button [disabled]="!enabled" (click)="Encontrado()" > Marcar como encontrado</ion-button>
-      <br>
-          <span *ngIf="!enabled">Para marcar como encontrado es necesario estar a menos de 50 metos de la ubicacion.</span>
+      <ion-button [disabled]="!enabled" (click)="Encontrado()">Ver Desafío</ion-button>
     </div>
     
   </div>
+  <small><span *ngIf="!enabled" style="color: yellow;">*Recuerda que es necesario estar por lo menos 50m cerca para ver el desafío.</span></small>
 </div>

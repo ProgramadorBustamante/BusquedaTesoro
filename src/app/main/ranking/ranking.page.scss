@@ -1,5 +1,14 @@
+.imagen{
+  background-image: url('/assets/goro.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
-ion-content{
-    --background : url('/assets/background.jpg') 100% 100%
+  .contenedor{
+    display: grid;
+    // align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
   }
-  
+

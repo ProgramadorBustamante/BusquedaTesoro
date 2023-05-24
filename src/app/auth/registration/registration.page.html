@@ -1,15 +1,16 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Registro</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content >
 <div class="contenedor imagen">
-  <form [formGroup]="frmRegistro" (submit)="entrar()">
+  <form [formGroup]="frmRegistro" (submit)="entrar()" class="center">
+    <h1><strong>Registro</strong></h1>
     <ion-item lines="full">
       <ion-label position="floating">Nombre Ape</ion-label>
       <ion-input formControlName="name"  type="text" required></ion-input>
@@ -32,7 +33,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="primary" expand="block">Registrarme</ion-button>
+        <ion-button type="submit" color="primary" expand="block">Registrarme <ion-icon name="save-outline"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
   </form>
