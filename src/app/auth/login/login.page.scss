@@ -1,8 +1,11 @@
 
-ion-content{
-    --background : url('/assets/background.jpg') 100% 100%
-  }
-  
+
+.imagen{
+  background-image: url('/assets/goro.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
   .contenedor{
     display: grid;
     align-items: center;
@@ -16,6 +19,6 @@ ion-content{
     height: 346px;
     display: grid;
     align-items: center;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,0.5);
     padding: 1rem 2rem;
   }

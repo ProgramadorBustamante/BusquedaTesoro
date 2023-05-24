@@ -1,0 +1,13 @@
+
+.imagen{
+    background-image: url('/assets/goro.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .contenedor{
+    display: grid;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+  }  

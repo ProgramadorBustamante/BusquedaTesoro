@@ -7,8 +7,9 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
-  <div class="contenedor">
+<ion-content >
+
+  <div class="contenedor imagen" >
 
   <form [formGroup]="frmLogin" (submit)="entrar()" class="center">
     <h1><strong>Iniciar Sesión</strong> </h1>
@@ -24,7 +25,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block" >Entrar</ion-button>
+        <ion-button type="submit" color="danger" expand="block" >Ingresar</ion-button>
         <a [routerLink]="['/auth/forgot-password']" class="small-text">¡Olvide mi contraseña!</a>
       </ion-col>
     </ion-row>
