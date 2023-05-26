@@ -10,7 +10,8 @@
 <ion-content >
   <div class="contenedor imagen">
   <form [formGroup]="frmLogin" (submit)="entrar()" class="center">
-    <h1><strong>Iniciar Sesión</strong> </h1>
+    <h1 class="titulo"><strong>Iniciar Sesión</strong> </h1>
+    
     <ion-item lines="full">
       <ion-label position="floating">Correo</ion-label>
       <ion-input formControlName="email" type="text" required></ion-input>

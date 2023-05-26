@@ -1,14 +1,11 @@
 <div class="wraper" style="padding : 1rem " >
   
-  <h1 style="color: seagreen;">{{data.data.titulo}}</h1>
-  <hr>
+  <h1 style="color: rgb(65, 151, 102);">{{data.data.titulo}}</h1>
   <p>{{data.data.descripcion }}</p>
-
   <img [src]="data.data.urlImagen" style="width: 100vw;  object-fit: cover;">
-
   
   <div *ngIf="this.encontrado">
-    Felicidades ya completaste la busqueda!
+    Tesoro completado!
   </div>
 
 
@@ -23,5 +20,5 @@
     </div>
     
   </div>
-  <small><span *ngIf="!enabled" style="color: yellow;">*Recuerda que es necesario estar por lo menos 50m cerca para ver el desafío.</span></small>
+  <span *ngIf="!enabled" style="color: rgb(230, 130, 0);">*Es necesario estar por lo menos 50m cerca del tesoro para ver el desafío.</span>
 </div>

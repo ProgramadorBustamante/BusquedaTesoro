@@ -26,10 +26,10 @@ export class RankingPage implements OnInit {
 
   shared(){
     Share.share({
-      title: 'See cool stuff',
-      text: 'Really awesome thing you need to see right meow',
-      url: 'http://ionicframework.com/',
-      dialogTitle: 'Share with buddies',
+      title: 'Ranking Buscadores de tesoros',
+      text: 'Los jugadores con mas puntuaciones',
+      url: 'http://localhost:8100/main/tabs/ranking',
+      dialogTitle: 'Comparte con tus amigos',
     });
   } 
 }

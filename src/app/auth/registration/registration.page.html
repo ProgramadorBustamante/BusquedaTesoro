@@ -10,14 +10,14 @@
 <ion-content >
 <div class="contenedor imagen">
   <form [formGroup]="frmRegistro" (submit)="entrar()" class="center">
-    <h1><strong>Registro</strong></h1>
+    <h1 class="titulo"><strong>Registro</strong></h1>
     <ion-item lines="full">
-      <ion-label position="floating">Nombre Ape</ion-label>
+      <ion-label position="floating">Nombre Apellido</ion-label>
       <ion-input formControlName="name"  type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Usuario (Alias/NickName)</ion-label>
+      <ion-label position="floating">Usuario/NickName</ion-label>
       <ion-input formControlName="user" type="text" required></ion-input>
     </ion-item>
 

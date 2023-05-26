@@ -6,31 +6,31 @@
 
 <ion-content >
   <div class="contenedor imagen">
-    <h1 style="text-align: center;" ><strong>
-       <ion-icon name="trophy-outline"></ion-icon>
+    <p class="tituloranking" >       
        <ion-icon name="trophy-outline"></ion-icon>
        <ion-icon name="trophy-outline"></ion-icon>
         Ranking 
         <ion-icon name="trophy-outline"></ion-icon>
         <ion-icon name="trophy-outline"></ion-icon>
-        <ion-icon name="trophy-outline"></ion-icon>
-        </strong> </h1>
+        <p>
 
-    <ion-list style="margin: 1rem;">
-    <ion-list-header>
+    <ion-list style="margin: 1rem;" class="lista">
+    <ion-list-header color="danger">
       <ion-label></ion-label>
       <ion-label><h2>Jugador / NickName</h2></ion-label>
       <ion-label><h2>Total puntos</h2></ion-label>
     </ion-list-header>
 
-    <ion-item *ngFor="let item of ranking ">
+    <ion-item *ngFor="let item of ranking " color="medium">
       <ion-icon name="person-outline"></ion-icon>
       {{item.user.user }}
       <span slot="end"> {{item.data.puntos }} </span>
     </ion-item>
   </ion-list>
 
-<ion-button  (click)="shared()"> Compartir Ranking <ion-icon name="share-social-outline"></ion-icon> </ion-button>
+<ion-button  (click)="shared()">
+  Compartir Ranking
+  <ion-icon name="share-social-outline"></ion-icon> </ion-button>
 
 
 </div>

@@ -1,21 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>DESAFIO</ion-title>
+    <ion-title>{{ tesoro.data.titulo }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
   <div style="padding: 1rem;">
-
-    <h5>Te encuentras en el tesoro  "{{ tesoro.data.titulo }}" </h5>
     <img [src]="tesoro.data.urlImagen" width="100%">
-    <p> Completa el siguientedesafio y ganaras +<strong>{{ tesoro.data.puntos }}</strong> puntos.</p>
+    <p> *Completa el siguiente desafio y ganaras +{{ tesoro.data.puntos }} puntos.</p>
 <hr color="success">
 <h5> {{ tesoro.data.acertijo }}</h5>
 <hr color="success">
 
-<small><span style="color: yellow"> *Tienes 3 intentos, si los agotas no podras acceder hasta el día de mañana.</span></small>
+<span style="color: rgb(230, 130, 0)"> *Tienes 3 intentos, si los agotas no podras acceder hasta el día de mañana.</span>
 
 <p>Ingresa tu respuesta:</p>
 <ion-textarea fill="outline" placeholder="Escribe aqui..."  [(ngModel)]="respuesta" style="border: 1px solid gray;"></ion-textarea>
