@@ -3,7 +3,7 @@ android {
 
   signingConfigs {
     reelase {
-      storeFile file('C:\\Users\\Huhuishers\\Desktop\\Hoteles\\my-release-key.keystore')
+      storeFile file('C:\\Users\\Christian\\Desktop\\BusquedaTesoro\\my-release-key.keystore')
       storePassword 'android'
       keyAlias 'alias_name'
       keyPassword 'android'

@@ -13,10 +13,13 @@
 <h5> {{ tesoro.data.acertijo }}</h5>
 <hr color="success">
 
+<p>Pista: {{ tesoro.data.pista }}</p>
+
 <span style="color: rgb(230, 130, 0)"> *Tienes 3 intentos, si los agotas no podras acceder hasta el día de mañana.</span>
 
 <p>Ingresa tu respuesta:</p>
-<ion-textarea fill="outline" placeholder="Escribe aqui..."  [(ngModel)]="respuesta" style="border: 1px solid gray;"></ion-textarea>
+<ion-textarea fill="outline" placeholder="Escribe aqui..."  
+[(ngModel)]="respuesta" style="border: 1px solid gray;" required></ion-textarea>
 <hr>
 <ion-button  (click)="Validar()" color="success" expand="block"> Validar respuesta <ion-icon name="checkmark-outline"></ion-icon> </ion-button>
 

@@ -8,8 +8,6 @@ import { AlertController } from '@ionic/angular';
   providedIn: 'root',
 })
 export class AuthService {
-  
- 
   constructor(
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
@@ -43,9 +41,9 @@ export class AuthService {
       })
       .catch(async (e) => {
         let alet = this.alertCtrl.create({
-          header: 'Alert',
-          subHeader: 'Intenta nuevamente!',
-          message: 'Usuario o contraseña incorrectos',
+          header: 'Atencion',
+          subHeader: 'Correo ya existente',
+          message: 'contraseña debe ser mayor a 6 char.',
           buttons: ['OK'],
         });
         await (await alet).present();

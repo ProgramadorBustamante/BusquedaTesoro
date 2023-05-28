@@ -36,7 +36,10 @@ export class PerfilPage implements OnInit {
   }
 
   Actualizar(){
-
+    if(this.frmUsuario.invalid){ 
+    alert("completa todos los campos.");
+  
+  }else{
     console.log(this.frmUsuario.value);
     this.tesorosServ.ActualizarDatos(this.uid,this.frmUsuario.value).then(async c=>{
       const alert = await this.alertCtrl.create({
@@ -47,6 +50,6 @@ export class PerfilPage implements OnInit {
 
     });
     
-
+  }
   }
 }

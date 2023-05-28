@@ -11,15 +11,15 @@
   <ion-list>
     <ion-item lines="full">
       <ion-label position="floating">Nombre : </ion-label>
-      <ion-input  [disabled]="true"  formControlName="name"> </ion-input> 
+      <ion-input formControlName="name" required> </ion-input> 
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Usuario/Nick Name : </ion-label>
-      <ion-input  formControlName="user"> </ion-input> 
+      <ion-input formControlName="user" required> </ion-input> 
     </ion-item >
     <ion-item [disabled]="true" lines="full">
       <ion-label position="floating">Correo : </ion-label>
-      <ion-input formControlName="email"> </ion-input> 
+      <ion-input formControlName="email" required> </ion-input> 
     </ion-item>
   </ion-list>
   <ion-button type="submit" color="danger" expand="block">Actualizar <ion-icon name="bookmark-outline"></ion-icon> </ion-button>

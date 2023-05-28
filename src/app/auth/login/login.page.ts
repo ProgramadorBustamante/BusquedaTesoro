@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
   entrar(){
     if(this.frmLogin.invalid){
      
-      alert("completa todos los campos");
+      alert("completa todos los campos.");
 
     }else{
 
@@ -37,20 +37,15 @@ export class LoginPage implements OnInit {
         if(c){
           localStorage.setItem('uid' , c.user?.uid || "");
           this.authServ.ObtenerUsuario(c.user?.uid || "" );
-       
-
           this.authServ.ObtenerPuntos(c.user?.uid);
-          
           this.router.navigate(['/main/tabs/mapa'])
-
-
 
         }else{
          const alert = await  this.alertCtrl.create({
-            header: '¡Atención!',
-          subHeader  : "Usuario o contraseña incorrectos",
-           message : 'Intenta nuevamente!',
-            buttons: ['OK'],
+          header: 'Atención',
+          subHeader  : "Correo o contraseña incorrectos.",
+          message : 'Intenta nuevamente!',
+          buttons: ['OK'],
           });
 
           await alert.present();
@@ -58,8 +53,8 @@ export class LoginPage implements OnInit {
         
       }).catch(async (err)=>{
         const alert = await this.alertCtrl.create({
-          header: '¡Atención!',
-          subHeader  : "Usuario o contraseña incorrectos",
+          header: 'Atención',
+          subHeader  : "Correo o contraseña incorrectos.",
            message : 'Intenta nuevamente!',
             buttons: ['OK'],
         })

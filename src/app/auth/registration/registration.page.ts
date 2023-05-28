@@ -19,23 +19,18 @@ export class RegistrationPage implements OnInit {
   constructor( private authServ : AuthService, private router : Router) { }
 
   ngOnInit() {
-
-
-
   }
-
   entrar(){
     if(this.frmRegistro.invalid){
      
-      alert("completa todos los campos");
+      alert("completa todos los campos.");
 
     }else{
-
       console.log(this.frmRegistro.value);
-      
       this.authServ.RegisterUser(this.frmRegistro.value).then(c=>{
         if(c){
-          this.router.navigate(['/main/tabs/mapa'])
+          alert("Registrado correctamente! Inicia sesión.")
+          this.router.navigate(['/main/tabs/login'])
         }
         
       }).catch(err=>{
